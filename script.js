@@ -9,37 +9,45 @@ function generate()
 	var cardcontainer = document.getElementById("card-container");
 	var entrycontainer = document.getElementById("entry-container");
 	var entrytext = document.getElementById("entry-text");
-	var button = document.getElementById("entry-text");
 	var bump = document.getElementById("bump-down");
 	var text = document.getElementById("text");
+	var samples = document.getElementById("sample-buttons")
+
 	cardcontainer.style.display = "block";
 	entrycontainer.style.display = "none";
 	entrytext.innerHTML="Edit Cards";
-	bump.style.display = "block";
+	bump.style.display = "inline-block";
+	samples.style.display = "none";
+
 	parse(text.value);
-	entrytext.onclick=function(){regenerate();};
-	
 	flipped=false;
 	current_card=0;
 	next();
+
+	entrytext.onclick=function(){regenerate();};
 }
 function regenerate()
 {
 	var cardcontainer = document.getElementById("card-container");
 	var entrycontainer = document.getElementById("entry-container");
 	var entrytext = document.getElementById("entry-text");
-	var button = document.getElementById("entry-text");
 	var bump = document.getElementById("bump-down");
+	var samples = document.getElementById("sample-buttons")
+
 	cardcontainer.style.display = "none";
 	entrycontainer.style.display = "block";
 	entrytext.innerHTML="Generate";
 	bump.style.display = "none";
+	samples.style.display = "inline";
+
 	entrytext.onclick=function(){generate();};
 }
 function parse(arg)
 {
 	var lines = arg.split("\n");
 	var temp_num_cards = 0;
+	front = [];
+	back = [];
 	for (i = 0; i < lines.length; i++)
 	{
 		front.push(lines[i].split(":")[0].trim());
@@ -80,5 +88,31 @@ function previous()
 
 function random()
 {
-	console.log('random')
+	card = document.getElementById("card-text");
+	current_card = Math.ceil(Math.random()*num_cards);
+	flipped=false;
+	card.innerHTML = (front[current_card-1]);
+}
+
+function vocab()
+{
+	var text = document.getElementById("text");
+	text.value=
+"to obviate : to remove\n\
+demur : raising doubts or showing reluctance\n\
+filigree : delicate fine jewellery, usually made of gold or silver thread or beads\n\
+convalescence : time spent recovering from an illness\n\
+dithyramb : choral song for Dionysus\n\
+turbid : cloudy, obscured, opaque\n\
+glib : fluent and voluable but insincere and shallow";
+}
+
+function reset()
+{
+	var text = document.getElementById("text");
+	text.value=
+"First : Reverse\n\
+Second : Reverse\n\
+Third : Reverse\n\
+Fourth : Reverse";
 }

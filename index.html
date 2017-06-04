@@ -3,6 +3,7 @@
 
 <head>
 	<title>Flash Card Maker by Patriick</title>
+	<link rel='stylesheet' type='text/css' href='noramlize.css'>
 	<link rel='stylesheet' type='text/css' href='custom.css'>
 	<script src='script.js'></script>
 </head>
@@ -12,7 +13,7 @@
 		<span class='row'>
 
 			<span class='offset-by-four four columns' id='card-container'>
-				<p id='card-text'>test</p>
+				<h2 id='card-text'>test</h2>
 				<button id='next' onclick='next()'>Next</button>
 				<button id='flip' onclick='flip()'>Flip</button>
 				<button id='previous' onclick='previous()'>Previous</button>
@@ -32,6 +33,10 @@ Fourth : Reverse </textarea>
 			<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 			</span>
 			<button id='entry-text' onclick='generate()'>Generate</button>
+			<span id='sample-buttons'>
+				<button onclick='reset()'>Reset to Sample</button>
+				<button onclick='vocab()'>Vocabulary Flashcards</button>
+			</span>
 		</span>
 	</span>
 </body>
