@@ -1,5 +1,9 @@
+var front=[];
+var back=[];
+var num_cards=0;
+var current_card=0;
+var flipped=false;
 
-cards = {};
 function generate()
 {
 	var cardcontainer = document.getElementById("card-container");
@@ -14,6 +18,10 @@ function generate()
 	bump.style.display = "block";
 	parse(text.value);
 	entrytext.onclick=function(){regenerate();};
+	
+	flipped=false;
+	current_card=0;
+	next();
 }
 function regenerate()
 {
@@ -31,30 +39,43 @@ function regenerate()
 function parse(arg)
 {
 	var lines = arg.split("\n");
-	var front = [];
-	var back = [];
-	var num_cards = 0;
+	var temp_num_cards = 0;
 	for (i = 0; i < lines.length; i++)
 	{
 		front.push(lines[i].split(":")[0].trim());
 		back.push(lines[i].split(":")[1].trim());
-		num_cards++;
+		temp_num_cards++;
 	}
+	num_cards = temp_num_cards;
 }
 
 function next()
 {
-	console.log('next')
+	card = document.getElementById("card-text");
+	current_card++;
+	if (current_card > num_cards) {
+		current_card = 1;
+	}
+	flipped=false;
+	card.innerHTML = (front[current_card-1]);
 }
 
 function flip()
 {
-	console.log('flip')
+	card = document.getElementById("card-text");
+	flipped = flipped == false ? true : false;
+	card.innerHTML = flipped == false ? (front[current_card-1]) : (back[current_card-1]);
 }
 
 function previous()
 {
-	console.log('previous')
+	card = document.getElementById("card-text");
+	current_card--;
+	if (current_card < 1) {
+		current_card = num_cards;
+	}
+	flipped=false;
+	card.innerHTML = (front[current_card-1]);
 }
 
 function random()
