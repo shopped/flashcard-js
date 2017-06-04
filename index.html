@@ -3,21 +3,27 @@
 
 <head>
 	<title>Flash Card Maker by Patriick</title>
-	<link rel='stylesheet' type='text/css' href='skeleton.css'>
+<!-- 	<link rel='stylesheet' type='text/css' href='
+	normalize.css'>
+	<link rel='stylesheet' type='text/css' href='skeleton.css'> -->
+	<link rel='stylesheet' type='text/css' href='custom.css'>
 	<script src='script.js'></script>
 </head>
 
 <body>
 	<span class='container'>
 		<span class='row'>
-			<span class='offset-by-one ten columns'>
-				<h1> Flashcard Generator </h1>
-				<form>
-					<input type='textarea' id='text'>
-					<input type='reset' value='Clear'>
-					<input type='submit' value='Generate'>
-				</form>
+			<span class='offset-by-four four columns' id='card-container'>
+				<p id='card-text'>test</p>
 			</span>
+			<span class='offset-by-one ten columns' id ='entry-container'>
+				<h1> Flashcard Generator </h1>
+				<textarea form='text' rows='8' cols='40'>First : Reverse
+Second : Reverse </textarea>
+				<br>
+			</span>
+			<span id='bump-down'><br><br><br><br><br><br><br><br><br><br><br><br><br><br></span>
+			<button id='entry-text' onclick='generate()'>Generate</button>
 		</span>
 	</span>
 </body>
