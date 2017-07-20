@@ -11,24 +11,64 @@
 
 <body>
 	<span class='container'>
-		<span class='row'>
+			<span class='row'>
+				<span class='twelve columns' id='header'>
+					<h2> Practice recalling the formulas of Calculus</h2>
+					<h3> You are using the formulas from chapters: 6, 7, 8, 10 </h3>
+					<hr>
+				</span>
 
-			<span class='offset-by-four four columns' id='card-container'>
-				<h2 id='card-text'>test</h2>
-				<button id='next' onclick='next()'>Next</button>
-				<button id='flip' onclick='flip()'>Flip</button>
-				<button id='previous' onclick='previous()'>Previous</button>
-				<button id='random' onclick='random()'>Random</button>
+				<span class='offset-by-one seven columns' id='right-container'>
+					<div class='card-container'>
+						<h2 id='front'>Test</h2>
+						<h2 id='hint'>Hint</h2>
+						<h2 id='back'>Back</h2>
+					</div>
+					<br>
+					<span class='deck-buttons'>
+						<span class='offset-by-two one column'>
+							<button class='button-primary' id='next' onclick='next()'>Correct</button>
+						</span>
+						<span class='offset-by-two one column'>
+							<button class='button-primary' id='flip' onclick='flip()'>Missed</button>
+						</span>
+						<span class='offset-by-two one column'>
+							<button class='button' id='shuffle' onclick='random()'>Shuffle Cards</button>
+						</span>
+					</span>
+				</span>
+
+				<span class='three columns' id='left-container'>
+					<ul>
+						<span class='row'>
+							<button class='button-primary' id='hint'>Hint</button>
+						</span>
+						<span class='row'>
+							<button class='button-primary' id='flip'>Flip</button>
+						</span>
+						<hr>
+						<span class='row'>
+							<span class='six columns'>
+								<button class='button' id='generate'>New Deck</button>
+							</span>
+							<span class='six columns'>
+								<button class='button' id='help'>Help</button>
+							</span>
+						</span>
+					</ul>
+				</span>
 			</span>
 
-			<span class='offset-by-one ten columns' id ='entry-container'>
-				<h1> Select Chapters </h1>
-				<form>
-				<h1> Chapter 6 <input type='checkbox' value='6' checked></h1>
-				<h1> Chapter 7 <input type='checkbox' value='7' checked></h1>
-				<h1> Chapter 8 <input type='checkbox' value='8' checked></h1>
-				<h1> Chapter 10 <input type='checkbox' value='10' checked></h1>
-				</form>
+			<span class='row'>
+				<span class='offset-by-one ten columns' id ='entry-container'>
+					<h1> Select Chapters </h1>
+					<form>
+					<h1> Chapter 6 <input type='checkbox' value='6' checked></h1>
+					<h1> Chapter 7 <input type='checkbox' value='7' checked></h1>
+					<h1> Chapter 8 <input type='checkbox' value='8' checked></h1>
+					<h1> Chapter 10 <input type='checkbox' value='10' checked></h1>
+					</form>
+				</span>
 			</span>
 
 			<span id='bump-down'>
