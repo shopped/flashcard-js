@@ -12,13 +12,13 @@
 <body>
 	<span class='container'>
 			
-			<div class='row' id='header'>
+			<div class='row' id='deck-header'>
 				<h2> Practice recalling the formulas of Calculus</h2>
 				<h3> You are using the formulas from chapters: 6, 7, 8, 10 </h3>
 				<hr>
 			</div>
 
-			<div class='row'>
+			<div class='row' id='deck-body'>
 
 				<span class='offset-by-one seven columns' id='right-container'>
 					<div class='card-container'>
@@ -51,7 +51,7 @@
 						<hr>
 						<span class='row'>
 							<span class='six columns'>
-								<button class='button' id='generate'>New Deck</button>
+								<button class='button' id='generate' onclick="new_deck()">New Deck</button>
 							</span>
 							<span class='six columns'>
 								<button class='button' id='help'>Help</button>
@@ -62,8 +62,8 @@
 
 			</div>
 
-			<span class='row'>
-				<span class='offset-by-one ten columns' id ='entry-container'>
+			<div class='row' id='chapter-selection'>
+				<span class='offset-by-one ten columns'>
 					<h1> Select Chapters </h1>
 					<form>
 					<h1> Chapter 6 <input type='checkbox' value='6' checked></h1>
@@ -72,17 +72,13 @@
 					<h1> Chapter 10 <input type='checkbox' value='10' checked></h1>
 					</form>
 				</span>
-			</span>
+			</div>
 
-			<span id='bump-down'>
-				<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-			</span>
-
-			<span class='row' id='generate-button'>
+			<div class='row' id='generate-button'>
 				<span class='twelve columns'>
-					<button id='entry-text' onclick='generate()'>Generate</button>
+					<button id='entry-text' onclick='generate_deck()'>Generate</button>
 				</span>
-			</span>
+			</div>
 
 		</span>
 	</span>

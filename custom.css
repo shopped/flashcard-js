@@ -1,17 +1,18 @@
-#header{
+#deck-header{
 	text-align: center;
+	display:none;
 }
 
-#entry-container{
+#deck-body{
+	display:none;
+}
+
+#chapter-selection{
 	text-align: center;
-	display: none;
-	z-index:-1;
 }
 
 #generate-button{
 	text-align: center;
-	display: none;
-	z-index:-1;
 }
 
 .card-container{
@@ -20,10 +21,6 @@
 	border:3px solid #555;
 }
 
-#bump-down{
-	display:none;
-	z-index:-1;
-}
 #card-text{
 	padding:60px;
 }
