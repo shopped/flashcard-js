@@ -22,22 +22,25 @@
 			</span>
 
 			<span class='offset-by-one ten columns' id ='entry-container'>
-				<h1> Flashcard Generator </h1>
-				<textarea id='text' rows='8' cols='40'>First : Reverse
-Second : Reverse
-Third : Reverse
-Fourth : Reverse </textarea>
-				<br>
+				<h1> Select Chapters </h1>
+				<form>
+				<h1> Chapter 6 <input type='checkbox' value='6' checked></h1>
+				<h1> Chapter 7 <input type='checkbox' value='7' checked></h1>
+				<h1> Chapter 8 <input type='checkbox' value='8' checked></h1>
+				<h1> Chapter 10 <input type='checkbox' value='10' checked></h1>
+				</form>
 			</span>
 
 			<span id='bump-down'>
-			<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 			</span>
-			<button id='entry-text' onclick='generate()'>Generate</button>
-			<span id='sample-buttons'>
-				<button onclick='reset()'>Reset to Sample</button>
-				<button onclick='vocab()'>Vocabulary Flashcards</button>
+
+			<span class='row' id='generate-button'>
+				<span class='twelve columns'>
+					<button id='entry-text' onclick='generate()'>Generate</button>
+				</span>
 			</span>
+
 		</span>
 	</span>
 </body>
