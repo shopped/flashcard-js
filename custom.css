@@ -5,11 +5,13 @@
 #entry-container{
 	text-align: center;
 	display: none;
+	z-index:-1;
 }
 
 #generate-button{
 	text-align: center;
 	display: none;
+	z-index:-1;
 }
 
 .card-container{
@@ -20,6 +22,7 @@
 
 #bump-down{
 	display:none;
+	z-index:-1;
 }
 #card-text{
 	padding:60px;
