@@ -35,3 +35,8 @@ input[type='checkbox']{
 input[type='checkbox']:checked{
 	background-color:#abd;
 }
+
+.card-container h2 img {
+	max-height:100%;
+	max-width:100%;
+}
