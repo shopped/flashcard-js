@@ -2,6 +2,9 @@
 	text-align: center;
 	display:none;
 }
+#congrats{
+	display:none;
+}
 
 #deck-body{
 	display:none;

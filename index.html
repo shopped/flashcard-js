@@ -22,6 +22,7 @@
 
 				<span class='offset-by-one seven columns' id='right-container'>
 					<div class='card-container'>
+						<h1 id='congrats'></h1>
 						<h2 id='front'><img src='' id='front_img'  alt='Front'></h2>
 						<h2 id='hint'><img id='hint_img' onerror='nohint()' src='' alt='hint'></h2>
 						<h2 id='back'><img id='back_img'  src='' alt='back'></h2>
@@ -30,9 +31,13 @@
 					<span class='deck-buttons'>
 						<span class='offset-by-two one column'>
 							<button class='button-primary' id='correct' onclick='correct()'>Correct</button>
+							<br>
+							<h3 id='correct-counter'>0</h3>
 						</span>
 						<span class='offset-by-two one column'>
 							<button class='button-primary' id='missed' onclick='missed()'>Missed</button>
+							<br>
+							<h3 id='missed-counter'>0</h3>
 						</span>
 						<span class='offset-by-two one column'>
 							<button class='button' id='shuffle' onclick='random()'>Shuffle Cards</button>

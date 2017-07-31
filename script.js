@@ -5,6 +5,7 @@ var right, wrong;
 var current_card=0;
 var flipped=false;
 var cards = [];
+var in_deck = [];
 var cards_per_chapter = {'6':26, '7':0, '8':0, '10':0, '11':0};
 
 var loc;
@@ -44,7 +45,13 @@ function generate_deck(){
 	var first = true;
 	var label = document.getElementById("header-label");
 	label.innerHTML = "Chapters: ";
+	/// reset stuff
 	num_cards = 0;
+	right = wrong = 0;
+	document.getElementById('correct-counter').innerHTML = 0;
+	document.getElementById('missed-counter').innerHTML = 0;
+	document.getElementById('congrats').style.display='none';
+	///
 	for (var i=0; i<4; i++){
 		{
 			parse_images_and_make_dictionary(chapters[i].toString())
@@ -55,7 +62,6 @@ function generate_deck(){
 		}
 	}
 	current_card = -1;
-	right = wrong = 0;
 	next();
 }
 
@@ -74,6 +80,7 @@ function parse_images_and_make_dictionary(chapter)
 		card.hint = dir+"/$/$".replace("$", chapter).replace("$", chapter)+".$h.png".replace("$", i);
 		cards.push(card); //adds that object to the cards array
 		num_cards++;
+		in_deck.push(true);
 	}
 	
 }
@@ -81,10 +88,10 @@ function parse_images_and_make_dictionary(chapter)
 //var current_card
 //array cards
 function next(){
-	console.log(cards);
-	console.log(num_cards);
+	//console.log(cards);
+	//console.log(num_cards);
 	current_card++;
-	if (current_card == num_cards - 1)
+	if (current_card == num_cards + 1)
 		current_card = 0
 	var card = cards[current_card];
 	console.log(card);
@@ -94,7 +101,7 @@ function next(){
 	//generate hint
 	document.getElementById('hint-btn').onclick=hint;
 	document.getElementById('hint_img').src = card.hint;
-	document.getElementById('hint-btn').style.backgroundColor = 'steelblue';
+	document.getElementById('hint-btn').style.backgroundColor = 'powderblue';
 	document.getElementById('hint-btn').style.color = 'white';
 	//will throw nohint on error
 	document.getElementById('hint_img').style.display = "none";
@@ -106,16 +113,45 @@ function nohint(){
 	document.getElementById('hint-btn').style.color = 'black';
 
 }
-function correct(){
-	next();
-	right++;
-	//Will remove the card
 	//Will add one to correct
+	//Will remove the card
 	//Will call next function
+function correct(){
+	right++;
+	document.getElementById('correct-counter').innerHTML = right;
+
+	if (current_card != -1)
+		in_deck[current_card - 1] = false;
+	var counter = 0;
+	for (var i=0; i<in_deck.length;i++){
+		if (in_deck[i])
+			counter++;
+	}
+	console.log(counter);
+	if (counter == 0){
+		congrats();
+		return;
+	}
+	
+	next();
+}
+function congrats(){
+	console.log("You know it all smarty pants, congrats!");
+	document.getElementById('front_img').style.display = "none";
+	document.getElementById('back_img').style.display = "none";
+	document.getElementById('hint_img').style.display = "none";
+	document.getElementById('correct').onclick = '';
+	document.getElementById('missed').onclick = '';
+	document.getElementById('shuffle').onclick = '';
+	document.getElementById('hint-btn').onclick = '';
+	document.getElementById('flip').onclick = '';
+	document.getElementById('congrats').style.display='block';
+	document.getElementById('congrats').innerHTML = "You know it all smarty pants, congrats!";
 }
 function missed(){
 	next();
 	wrong++;
+	document.getElementById('missed-counter').innerHTML = wrong;
 	//Will place the missed card at the end of the deck
 	//Will add one to missed
 	//Will call next function
