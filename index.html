@@ -23,7 +23,7 @@
 				<span class='offset-by-one seven columns' id='right-container'>
 					<div class='card-container'>
 						<h2 id='front'><img src='' id='front_img'  alt='Front'></h2>
-						<h2 id='hint'><img id='hint_img'  src='' alt='hint'></h2>
+						<h2 id='hint'><img id='hint_img' onerror='nohint()' src='' alt='hint'></h2>
 						<h2 id='back'><img id='back_img'  src='' alt='back'></h2>
 					</div>
 					<br>
@@ -43,7 +43,7 @@
 				<span class='three columns' id='left-container'>
 					<ul>
 						<span class='row'>
-							<button class='button-primary' id='hint'>Hint</button>
+							<button class='button-primary' id='hint-btn'>Hint</button>
 						</span>
 						<span class='row'>
 							<button class='button-primary' onclick='flip()' id='flip'>Flip</button>

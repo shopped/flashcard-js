@@ -8,6 +8,8 @@ var cards = [];
 var loc;
 var dir;
 
+
+
 function new_deck(){
 	//Show Selection
 	var a = document.getElementById("chapter-selection");
@@ -60,24 +62,13 @@ function parse_images_and_make_dictionary(chapter)
 	//starts a loop from 1 to 1000
 	for (var i=1;i<25;i++) //$$$FIX THIS
 	{
-		//checks that a card
-		//try{
-		//	open();//cwd/chapter/chapter.i.png
-		//} catch {
-		//	return;
-		//}
-
 		var card = {};
 		card.chapter = chapter;
+		//generates a front and back and saves in object
 		card.front = dir+"/$/$".replace("$", chapter).replace("$", chapter)+".$.png".replace("$", i);
 		card.back = dir+"/$/$".replace("$", chapter).replace("$", chapter)+".$b.png".replace("$", i);
-		//generates a front and back and saves in object
-		if (false){ //hint exists
-			//store hint
-			card.hint = true;
-		} else {
-			card.hint = false;
-		}
+		//checking for hints
+		card.hint = dir+"/$/$".replace("$", chapter).replace("$", chapter)+".$h.png".replace("$", i);
 		cards.push(card); //adds that object to the cards array
 		num_cards++;
 	}
@@ -95,8 +86,18 @@ function next(){
 	document.getElementById('front_img').src = card.front;
 	document.getElementById('back_img').src = card.back;
 	document.getElementById("back_img").style.display = "none";
-	document.getElementById("hint").style.display = "none";
+	//generate hint
+		document.getElementById('hint-btn').onclick=hint;
+		document.getElementById('hint_img').src = card.hint;
+		document.getElementById('hint-btn').style.backgroundColor = 'steelblue';
+	//will throw nohint on error
+	document.getElementById('hint_img').style.display = "none";
 	//document.getElementById('hint_img').src = dir +'/6/6.1.png';
+}
+function nohint(){
+	document.getElementById('hint-btn').onclick="";
+		document.getElementById('hint_img').src = '';
+		document.getElementById('hint-btn').style.backgroundColor = 'gray';
 }
 function correct(){
 	//Will remove the card
@@ -116,7 +117,9 @@ function flip(){
 	back.style.display = "block";
 }
 function hint(){
-	//Will show hint to visible
+	console.log("hint");
+	var hint = document.getElementById("hint_img");
+	hint.style.display = "block";
 }
 function shuffle(){
 	//Will randomize the IDs of the remaining cards
