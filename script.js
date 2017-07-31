@@ -6,6 +6,7 @@ var current_card=0;
 var cards = [];
 var in_deck = [];
 var cards_per_chapter = {'6':26, '7':0, '8':0, '10':0, '11':0};
+var chapters = [6, 7, 8, 10];
 
 var loc;
 var dir;
@@ -28,8 +29,36 @@ function new_deck(){
 	
 
 function generate_deck(){
+	/// reset stuff
+	num_cards = 0;
+	right = wrong = 0;
+	document.getElementById('correct-counter').innerHTML = 0;
+	document.getElementById('missed-counter').innerHTML = 0;
+	document.getElementById('congrats').style.display='none';
+
+
+	/// parsing
+	var first = true;
+	var label = document.getElementById("header-label");
+	label.innerHTML = "Chapters: ";
 	loc = window.location.pathname;
 	dir = loc.substring(0, loc.lastIndexOf('/'));
+	for (var i=0; i<4; i++){
+		if (document.getElementById(chapters[i].toString()).checked)
+		{
+			parse_images_and_make_dictionary(chapters[i].toString())
+			if (!first)
+				label.innerHTML += ", "
+			label.innerHTML += chapters[i].toString();
+			first = false;
+		}
+	}
+
+	if (num_cards == 0){
+		return;
+	}
+
+	
 	//Hide Selection
 	var a = document.getElementById("chapter-selection");
 	var b = document.getElementById("generate-button");
@@ -40,27 +69,7 @@ function generate_deck(){
 	var body= document.getElementById("deck-body");
 	header.style.display = "block";
 	body.style.display = "block";
-	document.getElementById('front_img').src = dir +'/6/6.1.png';
-	var chapters = [6, 7, 8, 10];
-	var first = true;
-	var label = document.getElementById("header-label");
-	label.innerHTML = "Chapters: ";
-	/// reset stuff
-	num_cards = 0;
-	right = wrong = 0;
-	document.getElementById('correct-counter').innerHTML = 0;
-	document.getElementById('missed-counter').innerHTML = 0;
-	document.getElementById('congrats').style.display='none';
-	///
-	for (var i=0; i<4; i++){
-		{
-			parse_images_and_make_dictionary(chapters[i].toString())
-			if (!first)
-				label.innerHTML += ", "
-			label.innerHTML += chapters[i].toString();
-			first = false;
-		}
-	}
+	//Card Logic
 	current_card = -1;
 	next();
 }
