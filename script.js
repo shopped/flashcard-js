@@ -6,7 +6,7 @@ var current_card=0;
 var cards = [];
 var in_deck = [];
 var cards_per_chapter = {'6':30, '7':0, '8':12, '10':6, '11':0};
-var chapters = [6, 7, 8, 10, 11];
+var chapters = [6, 8, 10];
 
 var loc;
 var dir;
@@ -43,7 +43,7 @@ function generate_deck(){
 	label.innerHTML = "Chapters: ";
 	loc = window.location.pathname;
 	dir = loc.substring(0, loc.lastIndexOf('/'));
-	for (var i=0; i<len(chapters); i++){
+	for (var i=0; i<chapters.length; i++){
 		if (document.getElementById(chapters[i].toString()).checked)
 		{
 			parse_images_and_make_dictionary(chapters[i].toString())
