@@ -3,7 +3,6 @@ var back=[];
 var num_cards=0;
 var right, wrong;
 var current_card=0;
-var flipped=false;
 var cards = [];
 var in_deck = [];
 var cards_per_chapter = {'6':26, '7':0, '8':0, '10':0, '11':0};
@@ -15,6 +14,7 @@ var dir;
 
 function new_deck(){
 	//Show Selection
+	restart();
 	var a = document.getElementById("chapter-selection");
 	var b = document.getElementById("generate-button");
 	a.style.display = "block";
@@ -93,6 +93,11 @@ function next(){
 	current_card++;
 	if (current_card == num_cards + 1)
 		current_card = 0
+	while (!in_deck[current_card]) {
+		current_card++;
+		if (current_card == num_cards + 1)
+			current_card = 0
+	}
 	var card = cards[current_card];
 	console.log(card);
 	document.getElementById('front_img').src = card.front;
@@ -118,16 +123,16 @@ function nohint(){
 	//Will call next function
 function correct(){
 	right++;
-	document.getElementById('correct-counter').innerHTML = right;
+	document.getElementById('correct-counter').innerHTML = right+"/"+num_cards;
 
 	if (current_card != -1)
-		in_deck[current_card - 1] = false;
+		in_deck[current_card] = false;
 	var counter = 0;
 	for (var i=0; i<in_deck.length;i++){
 		if (in_deck[i])
 			counter++;
 	}
-	console.log(counter);
+	console.log(in_deck);
 	if (counter == 0){
 		congrats();
 		return;
@@ -136,7 +141,6 @@ function correct(){
 	next();
 }
 function congrats(){
-	console.log("You know it all smarty pants, congrats!");
 	document.getElementById('front_img').style.display = "none";
 	document.getElementById('back_img').style.display = "none";
 	document.getElementById('hint_img').style.display = "none";
@@ -146,7 +150,20 @@ function congrats(){
 	document.getElementById('hint-btn').onclick = '';
 	document.getElementById('flip').onclick = '';
 	document.getElementById('congrats').style.display='block';
-	document.getElementById('congrats').innerHTML = "You know it all smarty pants, congrats!";
+}
+function restart(){
+	document.getElementById('front_img').style.display = "block";
+	document.getElementById('back_img').style.display = "block";
+	document.getElementById('hint_img').style.display = "block";
+	document.getElementById('correct').onclick = correct;
+	document.getElementById('missed').onclick = missed;
+	document.getElementById('shuffle').onclick = shuffle;
+	document.getElementById('hint-btn').onclick = hint;
+	document.getElementById('flip').onclick = flip;
+	document.getElementById('congrats').style.display='none';
+	in_deck = [];
+	cards = [];
+
 }
 function missed(){
 	next();
@@ -169,5 +186,6 @@ function hint(){
 	hint.style.display = "block";
 }
 function shuffle(){
+	console.log("shuffle");
 	//Will randomize the IDs of the remaining cards
 }
