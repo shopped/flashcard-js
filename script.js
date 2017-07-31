@@ -94,6 +94,8 @@ function next(){
 	console.log(card);
 	document.getElementById('front_img').src = card.front;
 	document.getElementById('back_img').src = card.back;
+	document.getElementById("back_img").style.display = "none";
+	document.getElementById("hint").style.display = "none";
 	//document.getElementById('hint_img').src = dir +'/6/6.1.png';
 }
 function correct(){
@@ -108,6 +110,10 @@ function wrong(){
 }
 function help(){
 	//This function will show a bunch of hidden elements
+}
+function flip(){
+	var back = document.getElementById("back_img");
+	back.style.display = "block";
 }
 function hint(){
 	//Will show hint to visible
