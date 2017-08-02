@@ -183,7 +183,7 @@ function missed(){
 	//Will call next function
 }
 function help(){
-	//This function will show a bunch of hidden elements
+	window.alert("email math@patriick.com")
 }
 function flip(){
 	var back = document.getElementById("back_img");
