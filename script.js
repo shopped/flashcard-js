@@ -5,8 +5,8 @@ var right, wrong;
 var current_card=0;
 var cards = [];
 var in_deck = [];
-var cards_per_chapter = {'6':30, '7':0, '8':12, '10':6, '11':0};
-var chapters = [6, 8, 10];
+var cards_per_chapter = {'6':30, '7':15, '8':12, '10':6, '11':12};
+var chapters = [6, 7, 8, 10, 11];
 
 var loc;
 var dir;
